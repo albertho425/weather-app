@@ -26,6 +26,10 @@ let mapText = document.getElementById("map");
 let windText = document.getElementById("wind");
 
 
+/**
+ *  Get location data from API
+ */
+
 async function getData() {
 
     const apiURL =  "https://ipapi.co/json/"
@@ -169,21 +173,15 @@ function outputWeatherConditions(conditionInput)
     weatherConditionsText.innerHTML = conditionInput;
 }
 
+/**
+ * 
+ * Output the weather icon to the screen as an image
+ * @param {*} iconInput 
+ */
+
 function outputWeatherIcon(iconInput)
 {
-    let tempString = iconInput;
-    let newString = tempString.substring(2);
-    
-    
-    // weatherIcon.innerHTML = "<img src=https://" + theIconCode +  "'>";
-
-    console.log(newString);
-
-    weatherIcon.innerHTML = "<img src='" + newString + "'>";
-
-    // weatherIconText.innerHTML = "<img src='http://openweathermap.org/img/w/" + theIconCode +  ".png'>";
-
-
+     weatherIcon.innerHTML = "<img src='https:" + iconInput +  "'>";
 }
 
 function outputVisibility(visibilityInput) {
