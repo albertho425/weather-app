@@ -16,6 +16,8 @@ geoAPIkey = "eec122638c9e4b6397e0c2634019c4bc"
 window.onload = getData();
 
 let ipAddressText = document.getElementById("ipAddress");
+let cityRegionText = document.getElementById("cityRegion");
+let countryText = document.getElementById("country");
 let weatherTempText = document.getElementById("weatherTemp");
 let weatherConditionsText = document.getElementById("weatherConditions");
 let weatherIcon = document.getElementById("weatherIcon");
@@ -43,10 +45,16 @@ async function getData() {
            
             let ipAdress = result.ip;
             let theCity = result.city;
+            let theRegion = result.region;
+            let theCountry = result.country_name;
             console.log(ipAdress);
-            console.log("the city is: " + theCity);
+            console.log(theCity);
+            console.log(theRegion);
+            console.log(theCountry);
+
             outputIpAddress(ipAdress);
-            
+            outputCityRegion(theCity,theRegion);
+            outputCountry(theCountry);
             getWeatherData(theCity);      
         }
 
@@ -204,5 +212,37 @@ function outputWind(windInput1,windInput2) {
     let combinedWind = windInput1 + " " + windInput2;
     console.log(combinedWind);
     windText.innerHTML = combinedWind;
+
+}
+
+//Output the city to the screen
+
+function outputCity(cityInput) {
+
+    cityText.innerHTML = cityInput;
+
+}
+
+//Output the state or province to the screen
+
+function outputRegion(regionInput) {
+
+    regionText.innerHTML = regionInput; 
+
+}
+
+//Output the country to the screen
+
+function outputCountry(countryInput) {
+
+    countryText.innerHTML = countryInput;
+
+}
+
+//Output city and region to the screen
+
+function outputCityRegion(cityInput,regionInput) {
+
+    cityRegionText.innerHTML = cityInput + ", " + regionInput;
 
 }
