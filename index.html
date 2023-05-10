@@ -10,35 +10,36 @@
   <body>
     
         
-        <div class="container mt-5 text-center ">
-        <div class="row ">
+  <div class="container mt-5 text-center ">
+      <div class="row ">
         <h1>Weather</h1>
         
         <div class="col-sm ">
-        <div class="card mx-auto" style="width: 18rem;">
-            
+        <div class="card mx-auto" style="width: 18rem;">   
             <div class="card-body">
-            <h5 class="card-title">IP address</h5>
+            <h5 class="card-title">Location</h5>
             <p class="card-text" id="ipAddress"></p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <p class="card-text" id="city"></p>
+            <p class="card-text" id="Country"></p>
+            
             </div>
         </div>
         </div>
 
         <div class="col-sm">
-        <div class="card mx-auto" style="width: 18rem;">
-            
+        <div class="card mx-auto" style="width: 18rem;">  
             <div class="card-body">
               <h5 class="card-title">Weather temp</h5>
               <p class="" id="weatherTemp"></p>
-              
+              <p class="" id="feelsLike"></p>
+              <p class="" id="weatherLow"></p>
+              <p class="" id="weatherHigh"></p>
             </div>
           </div>
         </div>
 
         <div class="col-sm">
-          <div class="card mx-auto" style="width: 18rem;">
-            
+          <div class="card mx-auto" style="width: 18rem;"> 
             <div class="card-body">
               <h5 class="card-title">Weather conditions</h5>
               <p class="card-text" id="weatherConditions"></p>
@@ -48,42 +49,35 @@
 
           <div class="col-sm">
           <div class="card mx-auto" style="width: 18rem;">
-            
             <div class="card-body">
               <h5 class="card-title">Weather Icon</h5>
               <p class="card-text" id="weatherIcon"></p>
             </div>
           </div>
         </div>
-      </div>
+       </div>  <!--end of row -->
 
-          <div class="row">
+      <div class="row">
           <div class="col-sm">
-          <div class="card mx-auto" style="width: 18rem;">
-            
+          <div class="card mx-auto" style="width: 18rem;">    
             <div class="card-body">
               <h5 class="card-title">Visibility</h5>
               <p class="card-text" id="visibility"></p>
-              
             </div>
           </div>
         </div>
 
-
         <div class="col-sm">
-          <div class="card mx-auto" style="width: 18rem;">
-            
+          <div class="card mx-auto" style="width: 18rem;">    
             <div class="card-body">
               <h5 class="card-title">Precipitation</h5>
               <p class="card-text" id="precipitation"></p>
-              
             </div>
           </div>
         </div>
 
         <div class="col-sm">
           <div class="card mx-auto" style="width: 18rem;">
-            
             <div class="card-body">
               <h5 class="card-title">Sunrise</h5>
               <p class="card-text" id="sunrise"></p>
@@ -98,13 +92,54 @@
             <div class="card-body">
               <h5 class="card-title">Sunset</h5>
               <p class="card-text" id="sunset"></p>
+            </div>
+          </div>
+        </div>
+        </div> <!--end of row -->
+
+      <div class="row">
+
+        <div class="col-sm">
+          <div class="card mx-auto" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Wind</h5>
+              <p class="card-text" id="wind"></p>      
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm">
+          <div class="card mx-auto" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Map</h5>
+                <img width="" height="" 
+                src="" id="wind">
               
             </div>
           </div>
         </div>
 
+        <div class="col-sm">
+          <div class="card mx-auto" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">TBA</h5>
+              <p class="card-text" id="TBA"></p>      
+            </div>
+          </div>
         </div>
-    </div>
+
+        <div class="col-sm">
+          <div class="card mx-auto" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">TBA</h5>
+              <p class="card-text" id="TBA"></p>      
+            </div>
+          </div>
+        </div>
+    </div> <!--end of row -->
+
+  </div>
+  
 
 
     <script src ="script.js"></script>

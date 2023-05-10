@@ -10,6 +10,7 @@
 weatherAPIKey = "ca80ffda470e4eca8e4235808230905";
 mapAPIKey = "aG8NIzp3QrvPAfPAcatmWUYjhlHsaOcy";
 // https://www.youtube.com/watch?v=njJdDjdwSIE
+geoAPIkey = "eec122638c9e4b6397e0c2634019c4bc"
 
 // When the page loads, run these functions
 window.onload = getData();
@@ -21,13 +22,14 @@ let weatherIcon = document.getElementById("weatherIcon");
 let visibilityText = document.getElementById("visibility");
 let sunriseText = document.getElementById("sunrise");
 let sunsetText = document.getElementById("sunset");
+let mapText = document.getElementById("map");
+let windText = document.getElementById("wind");
 
 
 async function getData() {
 
     const apiURL =  "https://ipapi.co/json/"
       
-
     try {
         const response = await fetch(apiURL, {cache: "no-cache"});
         const result = await response.json();
@@ -41,8 +43,7 @@ async function getData() {
             console.log("the city is: " + theCity);
             outputIpAddress(ipAdress);
             
-            getWeatherData(theCity);
-            
+            getWeatherData(theCity);      
         }
 
     } catch (error) {
@@ -50,11 +51,6 @@ async function getData() {
         console.log("IP address API error ", error);
     
     }
-}
-
-
-function outputIpAddress(ipInput) {
-    ipAddressText.innerHTML = ipInput;
 }
 
 
@@ -84,12 +80,14 @@ async function getWeatherData(ipAddressInput) {
             let condtionDescription = weatherResult.current.condition["text"];
             let theWeatherIcon = weatherResult.current.condition["icon"];
             let theVisibility = weatherResult.current.vis_km;
+            let windSpeed = weatherResult.current.wind_kph;
+            let windDir = weatherResult.current.wind_dir;
             
-
             outputWeatherTemp(theWeather);
             outputWeatherConditions(condtionDescription);
             outputWeatherIcon(theWeatherIcon);
             outputVisibility(theVisibility);
+            outputWind(windSpeed,windDir);
         }
 
         getSunriseSunset(ipAddressValue);
@@ -135,7 +133,30 @@ async function getSunriseSunset(ipAddressInput) {
     }
 }
 
+function getMapfromAPI (latInput,longInput) {
 
+    let URL = "https://maps.geoapify.com/v1/staticmap?style=osm-carto&width=600&height=400&center=lonlat:" + longInput + "," + latInput + "&&zoom=10&apiKey=" + geoAPIkey;
+
+
+
+    // <img width="600" height="400" 
+    //             src="https://maps.geoapify.com/v1/staticmap?style=osm-carto&width=600&height=400&center=lonlat:-123.126024,49.261216&zoom=10&apiKey=eec122638c9e4b6397e0c2634019c4bc"
+    //             </img>
+}
+
+/**
+ * 
+ * Functions that output to the screen
+ */
+
+function outputIpAddress(ipInput) {
+    ipAddressText.innerHTML = ipInput;
+}
+
+
+function outputIpAddress(ipInput) {
+    ipAddressText.innerHTML = ipInput;
+}
 
 function outputWeatherTemp(tempInput)
 {
@@ -176,4 +197,14 @@ function outputSunset(sunsetInput) {
 
 function outputSunrise(sunriseInput) {
     sunriseText.innerHTML = sunriseInput;
+}
+
+//Output wind speed and direction
+
+function outputWind(windInput1,windInput2) {
+
+    let combinedWind = windInput1 + " " + windInput2;
+    console.log(combinedWind);
+    windText.innerHTML = combinedWind;
+
 }
