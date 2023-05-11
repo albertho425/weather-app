@@ -28,6 +28,8 @@ let mapText = document.getElementById("map");
 let windText = document.getElementById("wind");
 let precipText = document.getElementById("precipitation");
 let feelsLikeText = document.getElementById("feelsLike");
+let highTempText = document.getElementById("weatherHigh");
+let lowTempText = document.getElementById("weatherLow");
 
 
 /**
@@ -111,6 +113,7 @@ async function getWeatherData(ipAddressInput) {
             outputItFeelsLike(itFeelsLike);
             
             getSunriseSunset(ipAddressValue);
+            getWeatherForcast(ipAddressValue);
             
         }
 
@@ -124,15 +127,19 @@ async function getWeatherData(ipAddressInput) {
 }
 
 /**
- * Get the Sunrise and Sunset from API using IP Address
+ * Get the forecast from API using IP Address
  * @param {*} ipAddressInput 
  */
 
-async function getSunriseSunset(ipAddressInput) {
+async function getWeatherForcast(ipAddressInput) {
 
     
 
-     const weatherUrl = "https://api.weatherapi.com/v1/astronomy.json?key=" + weatherAPIKey + "&q=" + ipAddressInput;
+     const weatherUrl = "https://api.weatherapi.com/v1/forecast.json?key=" + weatherAPIKey + "&q=" + ipAddressInput + "&days=1&aqi=no&alerts=no";
+     
+     //"https://api.weatherapi.com/v1/forecast.json?key=ca80ffda470e4eca8e4235808230905&q=176.100.43.48&days=1&aqi=no&alerts=no";
+     
+     
      
     try {
         const weatherResponse = await fetch(weatherUrl, {cache: "no-cache"});
@@ -140,22 +147,52 @@ async function getSunriseSunset(ipAddressInput) {
 
 
         if (weatherResponse.ok) {
-            console.log("the Weather API Astronomy result is: " , weatherResult);
+            console.log("the weather forecast API result is: " , weatherResult);
 
-            let theSunrise = weatherResult.astronomy.astro.sunrise;
-            let theSunset = weatherResult.astronomy.astro.sunset;
+            let dailyHigh = weatherResult.forecast.forecastday[0].day.maxtemp_c;
+            let dailyLow = weatherResult.forecast.forecastday[0].day.mintemp_c;
+    
+            console.log("high is: " + dailyHigh);
+            console.log("low is: " + dailyLow);
 
-            outputSunrise(theSunrise);
-            outputSunset(theSunset);
-            
+            outputHighLowTemp(dailyHigh,dailyLow);
         }
 
     } catch (error) {
         if (error) throw error;
-        console.log("Weather API Astronomy error: ", error);
+        console.log("the weather forecast API: ", error);
     
     }
 }
+
+/**
+ * Get the weather forecaset from API based on ip address
+ * @param {*} ipAddressInput 
+ */
+
+
+async function getSunriseSunset(ipAddressInput) {
+
+    const weatherUrl = "https://api.weatherapi.com/v1/forecast.json?key=" + weatherAPIKey + "&q=" + ipAddressInput;
+    
+   try {
+       const weatherResponse = await fetch(weatherUrl, {cache: "no-cache"});
+       const weatherResult = await weatherResponse.json();
+
+
+       if (weatherResponse.ok) {
+           console.log("the Weather API Astronomy result is: " , weatherResult);
+           
+       }
+
+   } catch (error) {
+       if (error) throw error;
+       console.log("Weather API Astronomy error: ", error);
+   
+   }
+}
+
+
 
 /**
  * 
@@ -290,4 +327,13 @@ function outputPrecip(precipInput) {
 
 function outputItFeelsLike(feelsLikeInput) {
     feelsLikeText.innerHTML = feelsLikeInput;
+}
+
+//Output the high and low temperature forecase to screen
+
+function outputHighLowTemp(highTemp,lowTemp)
+{
+    highTempText.innerHTML = highTemp;
+    lowTempText.innerHTML = lowTemp;
+
 }
