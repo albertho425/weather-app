@@ -27,6 +27,7 @@ let sunsetText = document.getElementById("sunset");
 let mapText = document.getElementById("map");
 let windText = document.getElementById("wind");
 let precipText = document.getElementById("precipitation");
+let feelsLikeText = document.getElementById("feelsLike");
 
 
 /**
@@ -99,6 +100,7 @@ async function getWeatherData(ipAddressInput) {
             let windSpeed = weatherResult.current.wind_kph;
             let windDir = weatherResult.current.wind_dir;
             let thePrecip = weatherResult.current.precip_mm;
+            let itFeelsLike = weatherResult.current.feelslike_c;
             
             outputWeatherTemp(theWeather);
             outputWeatherConditions(condtionDescription);
@@ -106,6 +108,7 @@ async function getWeatherData(ipAddressInput) {
             outputVisibility(theVisibility);
             outputWind(windSpeed,windDir);
             outputPrecip(thePrecip);
+            outputItFeelsLike(itFeelsLike);
             
             getSunriseSunset(ipAddressValue);
             
@@ -281,4 +284,10 @@ function outputCityRegion(cityInput,regionInput) {
 
 function outputPrecip(precipInput) {
     precipText.innerHTML = precipInput;
+}
+
+//Output it feels like temperature to screen
+
+function outputItFeelsLike(feelsLikeInput) {
+    feelsLikeText.innerHTML = feelsLikeInput;
 }
