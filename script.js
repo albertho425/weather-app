@@ -48,6 +48,13 @@ async function getData() {
             let theCity = result.city;
             let theRegion = result.region;
             let theCountry = result.country_name;
+
+            let theLat = result.latitude;
+            let theLong = result.longitude;
+
+            console.log("the lat is: " + theLat);
+            console.log("the long is: " + theLong);
+            getMapfromAPI(theLat,theLong);
             
             outputIpAddress(ipAdress);
             outputCityRegion(theCity,theRegion);
@@ -92,15 +99,16 @@ async function getWeatherData(ipAddressInput) {
             let windSpeed = weatherResult.current.wind_kph;
             let windDir = weatherResult.current.wind_dir;
             let thePrecip = weatherResult.current.precip_mm;
-
+            
             outputWeatherTemp(theWeather);
             outputWeatherConditions(condtionDescription);
             outputWeatherIcon(theWeatherIcon);
             outputVisibility(theVisibility);
             outputWind(windSpeed,windDir);
             outputPrecip(thePrecip);
-
+            
             getSunriseSunset(ipAddressValue);
+            
         }
 
        
@@ -146,15 +154,39 @@ async function getSunriseSunset(ipAddressInput) {
     }
 }
 
+/**
+ * 
+ * Get the map URL from API
+ * @param {*} latInput 
+ * @param {*} longInput 
+ * @returns 
+ */
+
 function getMapfromAPI (latInput,longInput) {
 
     let URL = "https://maps.geoapify.com/v1/staticmap?style=osm-carto&width=600&height=400&center=lonlat:" + longInput + "," + latInput + "&&zoom=10&apiKey=" + geoAPIkey;
 
-
+    console.log("returning: " + URL);
+    outputMap(URL);
 
     // <img width="600" height="400" 
     //             src="https://maps.geoapify.com/v1/staticmap?style=osm-carto&width=600&height=400&center=lonlat:-123.126024,49.261216&zoom=10&apiKey=eec122638c9e4b6397e0c2634019c4bc"
     //             </img>
+}
+
+/**
+ * Output the map to the screen
+ * @param {*} mapInput 
+ */
+
+function outputMap(mapInput)
+{
+
+    let mapImage = "<img src='" + mapInput + "'>"
+    console.log(mapImage);
+    mapText.innerHTML = mapImage;
+
+
 }
 
 /**
