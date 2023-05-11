@@ -1,3 +1,11 @@
 .location-map {
     width: 200px !important;
 }
+
+body {
+    background-color: #ffcc00;
+}
+
+.card {
+    margin-bottom: 10px;
+}
