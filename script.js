@@ -26,6 +26,7 @@ let sunriseText = document.getElementById("sunrise");
 let sunsetText = document.getElementById("sunset");
 let mapText = document.getElementById("map");
 let windText = document.getElementById("wind");
+let precipText = document.getElementById("precipitation");
 
 
 /**
@@ -47,11 +48,7 @@ async function getData() {
             let theCity = result.city;
             let theRegion = result.region;
             let theCountry = result.country_name;
-            console.log(ipAdress);
-            console.log(theCity);
-            console.log(theRegion);
-            console.log(theCountry);
-
+            
             outputIpAddress(ipAdress);
             outputCityRegion(theCity,theRegion);
             outputCountry(theCountry);
@@ -94,15 +91,19 @@ async function getWeatherData(ipAddressInput) {
             let theVisibility = weatherResult.current.vis_km;
             let windSpeed = weatherResult.current.wind_kph;
             let windDir = weatherResult.current.wind_dir;
-            
+            let thePrecip = weatherResult.current.precip_mm;
+
             outputWeatherTemp(theWeather);
             outputWeatherConditions(condtionDescription);
             outputWeatherIcon(theWeatherIcon);
             outputVisibility(theVisibility);
             outputWind(windSpeed,windDir);
+            outputPrecip(thePrecip);
+
+            getSunriseSunset(ipAddressValue);
         }
 
-        getSunriseSunset(ipAddressValue);
+       
 
     } catch (error) {
         if (error) throw error;
@@ -245,4 +246,10 @@ function outputCityRegion(cityInput,regionInput) {
 
     cityRegionText.innerHTML = cityInput + ", " + regionInput;
 
+}
+
+//Out the precipiration to the screen
+
+function outputPrecip(precipInput) {
+    precipText.innerHTML = precipInput;
 }
