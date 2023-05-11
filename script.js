@@ -15,7 +15,7 @@ geoAPIkey = "eec122638c9e4b6397e0c2634019c4bc"
 // When the page loads, run these functions
 window.onload = getData();
 
-let ipAddressText = document.getElementById("ipAddress");
+// let ipAddressText = document.getElementById("ipAddress");
 let cityRegionText = document.getElementById("cityRegion");
 let countryText = document.getElementById("country");
 let weatherTempText = document.getElementById("weatherTemp");
@@ -44,7 +44,7 @@ async function getData() {
         if (response.ok) {
             console.log("the IP API result is: " , result);
            
-            let ipAdress = result.ip;
+            // let ipAdress = result.ip;
             let theCity = result.city;
             let theRegion = result.region;
             let theCountry = result.country_name;
@@ -56,7 +56,7 @@ async function getData() {
             console.log("the long is: " + theLong);
             getMapfromAPI(theLat,theLong);
             
-            outputIpAddress(ipAdress);
+            // outputIpAddress(ipAdress);
             outputCityRegion(theCity,theRegion);
             outputCountry(theCountry);
             getWeatherData(theCity);      
@@ -164,14 +164,11 @@ async function getSunriseSunset(ipAddressInput) {
 
 function getMapfromAPI (latInput,longInput) {
 
-    let URL = "https://maps.geoapify.com/v1/staticmap?style=osm-carto&width=600&height=400&center=lonlat:" + longInput + "," + latInput + "&&zoom=10&apiKey=" + geoAPIkey;
+    let URL = "https://maps.geoapify.com/v1/staticmap?style=osm-carto&width=600&height=400&center=lonlat:" + longInput + "," + latInput + "&zoom=5&apiKey=" + geoAPIkey;
 
     console.log("returning: " + URL);
     outputMap(URL);
 
-    // <img width="600" height="400" 
-    //             src="https://maps.geoapify.com/v1/staticmap?style=osm-carto&width=600&height=400&center=lonlat:-123.126024,49.261216&zoom=10&apiKey=eec122638c9e4b6397e0c2634019c4bc"
-    //             </img>
 }
 
 /**
@@ -182,7 +179,7 @@ function getMapfromAPI (latInput,longInput) {
 function outputMap(mapInput)
 {
 
-    let mapImage = "<img src='" + mapInput + "'>"
+    let mapImage = "<img class='location-map' src='" + mapInput + "'>"
     console.log(mapImage);
     mapText.innerHTML = mapImage;
 
@@ -222,7 +219,7 @@ function outputWeatherConditions(conditionInput)
 
 function outputWeatherIcon(iconInput)
 {
-     weatherIcon.innerHTML = "<img src='https:" + iconInput +  "'>";
+     weatherIcon.innerHTML = "<img class='weather-icon' src='https:" + iconInput +  "'>";
 }
 
 function outputVisibility(visibilityInput) {
