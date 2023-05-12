@@ -30,6 +30,8 @@ let precipText = document.getElementById("precipitation");
 let feelsLikeText = document.getElementById("feelsLike");
 let highTempText = document.getElementById("weatherHigh");
 let lowTempText = document.getElementById("weatherLow");
+let chanceOfRainText = document.getElementById("chanceOfRain");
+let chanceOfSnowText = document.getElementById("chanceOfSnow");
 
 
 /**
@@ -151,11 +153,19 @@ async function getWeatherForcast(ipAddressInput) {
 
             let dailyHigh = weatherResult.forecast.forecastday[0].day.maxtemp_c;
             let dailyLow = weatherResult.forecast.forecastday[0].day.mintemp_c;
+
+            
+            let chanceOfRain = weatherResult.forecast.forecastday[0].day.daily_chance_of_rain;
+            let chanceOfSnow = weatherResult.forecast.forecastday[0].day.daily_chance_of_snow;
+
+            console.log("Chance of rain? " + chanceOfRain);
+            console.log("Chance of snow? " + chanceOfSnow);
             
             console.log("high is: " + dailyHigh);
             console.log("low is: " + dailyLow);
 
             outputHighLowTemp(dailyHigh,dailyLow);
+            outputChanceOfRainSnow(chanceOfRain,chanceOfSnow);
         }
 
     } catch (error) {
@@ -346,4 +356,12 @@ function outputHighLowTemp(highTemp,lowTemp)
     highTempText.innerHTML = highTemp;
     lowTempText.innerHTML = lowTemp;
 
+}
+
+//Output the chance of rain or snow
+
+function outputChanceOfRainSnow(chanceOfRain,chanceOfSnow) {
+    
+    chanceOfRainText.innerHTML = chanceOfRain;
+    chanceOfSnowText.innerHTML = chanceOfSnow;
 }
