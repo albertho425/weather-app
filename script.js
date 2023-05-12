@@ -32,6 +32,7 @@ let highTempText = document.getElementById("weatherHigh");
 let lowTempText = document.getElementById("weatherLow");
 let chanceOfRainText = document.getElementById("chanceOfRain");
 let chanceOfSnowText = document.getElementById("chanceOfSnow");
+let humidityText = document.getElementById("humidity");
 
 
 /**
@@ -77,8 +78,8 @@ async function getData() {
 
 /**
  * Get the weather data from API
- * @param {*} lat 
- * @param {*} long 
+ * @param {*} ipAddressInput
+ * 
  */
 
 async function getWeatherData(ipAddressInput) {
@@ -105,7 +106,9 @@ async function getWeatherData(ipAddressInput) {
             let windDir = weatherResult.current.wind_dir;
             let thePrecip = weatherResult.current.precip_mm;
             let itFeelsLike = weatherResult.current.feelslike_c;
+            let humidity = weatherResult.current.humidity;
             
+            console.log("humidity is: " + humidity);
             outputWeatherTemp(theWeather);
             outputWeatherConditions(condtionDescription);
             outputWeatherIcon(theWeatherIcon);
@@ -116,6 +119,7 @@ async function getWeatherData(ipAddressInput) {
             
             getSunriseSunset(ipAddressValue);
             getWeatherForcast(ipAddressValue);
+            outputHumidity(humidity);
             
         }
 
@@ -364,4 +368,10 @@ function outputChanceOfRainSnow(chanceOfRain,chanceOfSnow) {
     
     chanceOfRainText.innerHTML = chanceOfRain;
     chanceOfSnowText.innerHTML = chanceOfSnow;
+}
+
+//Output the humidity
+function outputHumidity(humidityInput) {
+    humidityText.innerHTML = humidityInput;
+    console.log(humidityText);
 }
