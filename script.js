@@ -151,7 +151,7 @@ async function getWeatherForcast(ipAddressInput) {
 
             let dailyHigh = weatherResult.forecast.forecastday[0].day.maxtemp_c;
             let dailyLow = weatherResult.forecast.forecastday[0].day.mintemp_c;
-    
+            
             console.log("high is: " + dailyHigh);
             console.log("low is: " + dailyLow);
 
@@ -179,16 +179,26 @@ async function getSunriseSunset(ipAddressInput) {
        const weatherResponse = await fetch(weatherUrl, {cache: "no-cache"});
        const weatherResult = await weatherResponse.json();
 
-
        if (weatherResponse.ok) {
            console.log("the Weather API Astronomy result is: " , weatherResult);
+
+           let theSunrise = weatherResult.forecast.forecastday[0].astro.sunrise;
+           let theSunset = weatherResult.forecast.forecastday[0].astro.sunset;
+
+           console.log("sunrise is: " + theSunrise);
+           console.log("sunset is: " + theSunset);
+        //    let theSunset = weatherResult.astronomy.astro.sunset;
+
+           
+           outputSunrise(theSunrise);
+           outputSunset(theSunset);
            
        }
 
    } catch (error) {
        if (error) throw error;
        console.log("Weather API Astronomy error: ", error);
-   
+ 
    }
 }
 
