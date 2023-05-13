@@ -35,6 +35,7 @@ let chanceOfSnowText = document.getElementById("chanceOfSnow");
 let humidityText = document.getElementById("humidity");
 let windGustText = document.getElementById("windGust");
 let uvText = document.getElementById("uv");
+let pressureText = document.getElementById("pressure");
 
 
 /**
@@ -111,6 +112,7 @@ async function getWeatherData(ipAddressInput) {
             let humidity = weatherResult.current.humidity;
             let windGust = weatherResult.current.gust_kph;
             let uv = weatherResult.current.uv;
+            let pressure = weatherResult.current.pressure_mb;
             
             outputWeatherTemp(theWeather);
             outputWeatherConditions(condtionDescription);
@@ -122,8 +124,8 @@ async function getWeatherData(ipAddressInput) {
 
             outputWindGust(windGust);
             outputUV(uv);
+            outputPressure(pressure);
 
-            
             getSunriseSunset(ipAddressValue);
             getWeatherForcast(ipAddressValue);
             outputHumidity(humidity);
@@ -391,4 +393,8 @@ function outputUV(uvInput)
 function outputWindGust(windGustInput) 
 {
     windGustText.innerHTML = windGustInput;
+}
+
+function outputPressure(pressureInput) {
+    pressureText.innerHTML  = pressureInput;
 }
