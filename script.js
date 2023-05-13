@@ -37,6 +37,13 @@ let windGustText = document.getElementById("windGust");
 let uvText = document.getElementById("uv");
 let pressureText = document.getElementById("pressure");
 
+let day1dateText = document.getElementById("1dayDate");
+let day1Icon = document.getElementById("1dayWeatherIcon");
+let day1HighTempText = document.getElementById("1dayTempHigh");
+let day1LowTempText = document.getElementById("1dayTempLow");
+let day1ChanceOfPrecipText = document.getElementById("1dayPrecip");
+let day1Wind = document.getElementById("1dayWind");
+
 
 /**
  *  Get location data from API
@@ -150,7 +157,7 @@ async function getWeatherForcast(ipAddressInput) {
 
     
 
-     const weatherUrl = "https://api.weatherapi.com/v1/forecast.json?key=" + weatherAPIKey + "&q=" + ipAddressInput + "&days=1&aqi=no&alerts=no";
+     const weatherUrl = "https://api.weatherapi.com/v1/forecast.json?key=" + weatherAPIKey + "&q=" + ipAddressInput + "&days=3&aqi=yes&alerts=yes";
      
      //"https://api.weatherapi.com/v1/forecast.json?key=ca80ffda470e4eca8e4235808230905&q=176.100.43.48&days=1&aqi=no&alerts=no";
      
@@ -170,6 +177,31 @@ async function getWeatherForcast(ipAddressInput) {
             
             let chanceOfRain = weatherResult.forecast.forecastday[0].day.daily_chance_of_rain;
             let chanceOfSnow = weatherResult.forecast.forecastday[0].day.daily_chance_of_snow;
+
+
+            let forecastDay1 = weatherResult.forecast.forecastday[0];
+            let forecastDay2 = weatherResult.forecast.forecastday[1];
+            let forecastDay3 = weatherResult.forecast.forecastday[2];
+
+            //Forecast date
+            let forecastDay1Date = forecastDay1.date;
+            let forecastDay1TempHigh = forecastDay1.day.maxtemp_c;
+            let forecastDay1TempLow = forecastDay1.day.mintemp_c;
+            let forecastDay1Rain = forecastDay1.day.daily_chance_of_rain;
+            let forecastDay1Snow = forecastDay1.day.daily_chance_of_snow;
+            let forecastDay1MaxWind = forecastDay1.day.maxwind_kph;
+            let forecastDay1Icon = forecastDay1.day.condition.icon;
+
+            outputDayForecast(forecastDay1Date, forecastDay1Icon,forecastDay1TempHigh, forecastDay1TempLow, forecastDay1Rain, forecastDay1MaxWind);
+            
+            
+            console.log(forecastDay1Date);
+            console.log(forecastDay1TempHigh);
+            console.log(forecastDay1TempLow);
+            console.log(forecastDay1Rain);
+            console.log(forecastDay1Snow);
+            console.log(forecastDay1MaxWind);
+            console.log(forecastDay1Icon);
 
             console.log("Chance of rain? " + chanceOfRain);
             console.log("Chance of snow? " + chanceOfSnow);
@@ -398,3 +430,16 @@ function outputWindGust(windGustInput)
 function outputPressure(pressureInput) {
     pressureText.innerHTML  = pressureInput;
 }
+
+function outputDayForecast(
+    dateInput, iconInput, highTempInput, lowTempInput, chanceOfPrecipInput, windInput) {
+ 
+        day1dateText.innerHTML = dateInput;
+        day1Icon.innerHTML = "<img class='weather-icon' src='https:" + iconInput +  "'>";
+        day1HighTempText.innerHTML = highTempInput;
+        day1LowTempText.innerHTML = lowTempInput;
+        day1ChanceOfPrecipText.innerHTML = chanceOfPrecipInput;
+        day1Wind.innerHTML = windInput;
+}
+
+
