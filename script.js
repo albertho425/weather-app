@@ -44,6 +44,12 @@ let day1LowTempText = document.getElementById("1dayTempLow");
 let day1ChanceOfPrecipText = document.getElementById("1dayPrecip");
 let day1Wind = document.getElementById("1dayWind");
 
+//weather alerts
+let alertHeadline = document.getElementById("alertHeadline");
+let alertCategory = document.getElementById("alertCategory");
+let alertEvent = document.getElementById("alertEvent");
+let alertDescription = document.getElementById("alertDescription");
+
 
 /**
  *  Get location data from API
@@ -67,6 +73,7 @@ async function getData() {
 
             let theLat = result.latitude;
             let theLong = result.longitude;
+            
 
             console.log("the lat is: " + theLat);
             console.log("the long is: " + theLong);
@@ -120,7 +127,7 @@ async function getWeatherData(ipAddressInput) {
             let windGust = weatherResult.current.gust_kph;
             let uv = weatherResult.current.uv;
             let pressure = weatherResult.current.pressure_mb;
-            
+
             outputWeatherTemp(theWeather);
             outputWeatherConditions(condtionDescription);
             outputWeatherIcon(theWeatherIcon);
@@ -128,6 +135,7 @@ async function getWeatherData(ipAddressInput) {
             outputWind(windSpeed,windDir);
             outputPrecip(thePrecip);
             outputItFeelsLike(itFeelsLike);
+
 
             outputWindGust(windGust);
             outputUV(uv);
@@ -159,10 +167,6 @@ async function getWeatherForcast(ipAddressInput) {
 
      const weatherUrl = "https://api.weatherapi.com/v1/forecast.json?key=" + weatherAPIKey + "&q=" + ipAddressInput + "&days=3&aqi=yes&alerts=yes";
      
-     //"https://api.weatherapi.com/v1/forecast.json?key=ca80ffda470e4eca8e4235808230905&q=176.100.43.48&days=1&aqi=no&alerts=no";
-     
-     
-     
     try {
         const weatherResponse = await fetch(weatherUrl, {cache: "no-cache"});
         const weatherResult = await weatherResponse.json();
@@ -183,6 +187,17 @@ async function getWeatherForcast(ipAddressInput) {
             let forecastDay2 = weatherResult.forecast.forecastday[1];
             let forecastDay3 = weatherResult.forecast.forecastday[2];
 
+            let alert = weatherResult.alerts.alert[0].headline;
+            let alertCategory = weatherResult.alerts.alert[0].category;
+            let alertEvent = weatherResult.alerts.alert[0].event;
+            let alertDescription = weatherResult.alerts.alert[0].desc;
+            
+            console.log(alert);
+            console.log("Alert category is:" + alertCategory);
+            console.log(alertEvent);
+            console.log(alertDescription);
+            outputAlert(alert,alertCategory,alertEvent,"");
+
             //Forecast date
             let forecastDay1Date = forecastDay1.date;
             let forecastDay1TempHigh = forecastDay1.day.maxtemp_c;
@@ -194,7 +209,7 @@ async function getWeatherForcast(ipAddressInput) {
 
             outputDayForecast(forecastDay1Date, forecastDay1Icon,forecastDay1TempHigh, forecastDay1TempLow, forecastDay1Rain, forecastDay1MaxWind);
             
-            
+            console.log(alert);
             console.log(forecastDay1Date);
             console.log(forecastDay1TempHigh);
             console.log(forecastDay1TempLow);
@@ -442,4 +457,21 @@ function outputDayForecast(
         day1Wind.innerHTML = windInput;
 }
 
+/**
+ * Output the weather alert
+ * 
+ * @param {*} headlineInput 
+ * @param {*} categoryInput 
+ * @param {*} eventInput 
+ * @param {*} descriptionInput 
+ */
 
+function outputAlert(headlineInput, categoryInput, eventInput, descriptionInput) {
+
+    alertHeadline.innerHTML = headlineInput;
+    alertCategory.innerHTML = categoryInput;
+    alertEvent.innerHTML = eventInput;
+
+    console.log(descriptionInput);
+
+}
