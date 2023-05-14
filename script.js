@@ -50,6 +50,8 @@ let alertCategory = document.getElementById("alertCategory");
 let alertEvent = document.getElementById("alertEvent");
 let alertDescription = document.getElementById("alertDescription");
 
+let formInput = document.getElementById("formInput");
+
 
 /**
  *  Get location data from API
@@ -209,21 +211,6 @@ async function getWeatherForcast(ipAddressInput) {
 
             outputDayForecast(forecastDay1Date, forecastDay1Icon,forecastDay1TempHigh, forecastDay1TempLow, forecastDay1Rain, forecastDay1MaxWind);
             
-            console.log(alert);
-            console.log(forecastDay1Date);
-            console.log(forecastDay1TempHigh);
-            console.log(forecastDay1TempLow);
-            console.log(forecastDay1Rain);
-            console.log(forecastDay1Snow);
-            console.log(forecastDay1MaxWind);
-            console.log(forecastDay1Icon);
-
-            console.log("Chance of rain? " + chanceOfRain);
-            console.log("Chance of snow? " + chanceOfSnow);
-            
-            console.log("high is: " + dailyHigh);
-            console.log("low is: " + dailyLow);
-
             outputHighLowTemp(dailyHigh,dailyLow);
             outputChanceOfRainSnow(chanceOfRain,chanceOfSnow);
         }
@@ -235,6 +222,73 @@ async function getWeatherForcast(ipAddressInput) {
     }
 }
 
+/**
+ * After user inputs form value, get the weather date for user
+ * @param {*} formInput 
+ */
+
+async function getWeatherDataForm(formInput) {
+
+    const weatherUrl = "https://api.weatherapi.com/v1/current.json?key=" + weatherAPIKey + "&q=" + formInput + "&aqi=no";
+
+
+    getWeatherData(formInput);      
+
+     
+    try {
+        const weatherResponse = await fetch(weatherUrl, {cache: "no-cache"});
+        const weatherResult = await weatherResponse.json();
+
+
+        if (weatherResponse.ok) {
+            console.log("the Weather API result from form input is: " , weatherResult);
+
+            let theCity = weatherResult.location.name;
+            let theRegion = weatherResult.location.region;
+            let theCountry = weatherResult.location.country;
+            outputCityRegion(theCity,theRegion);
+            outputCountry(theCountry);
+
+            let theWeather = weatherResult.current.temp_c;
+            let condtionDescription = weatherResult.current.condition["text"];
+            let theWeatherIcon = weatherResult.current.condition["icon"];
+            let theVisibility = weatherResult.current.vis_km;
+            let windSpeed = weatherResult.current.wind_kph;
+            let windDir = weatherResult.current.wind_dir;
+            let thePrecip = weatherResult.current.precip_mm;
+            let itFeelsLike = weatherResult.current.feelslike_c;
+            let humidity = weatherResult.current.humidity;
+            let windGust = weatherResult.current.gust_kph;
+            let uv = weatherResult.current.uv;
+            let pressure = weatherResult.current.pressure_mb;
+
+            outputWeatherTemp(theWeather);
+            outputWeatherConditions(condtionDescription);
+            outputWeatherIcon(theWeatherIcon);
+            outputVisibility(theVisibility);
+            outputWind(windSpeed,windDir);
+            outputPrecip(thePrecip);
+            outputItFeelsLike(itFeelsLike);
+
+
+            outputWindGust(windGust);
+            outputUV(uv);
+            outputPressure(pressure);
+
+            getSunriseSunset(formInput);
+            getWeatherForcast(formInput);
+            outputHumidity(humidity);
+            
+        }
+
+       
+
+    } catch (error) {
+        if (error) throw error;
+        console.log("Weather API error: ", error);
+    
+    }
+}
 /**
  * Get the weather forecaset from API based on ip address
  * @param {*} ipAddressInput 
@@ -290,6 +344,34 @@ function getMapfromAPI (latInput,longInput) {
     outputMap(URL);
 
 }
+
+/**
+ * Get the IP address or city from a form and process
+ * @param {*} input 
+ */
+
+function  processForm() {
+
+    // 176.100.43.109 Van
+    // 185.219.141.41 Seattle
+    // 185.212.118.40 Toronto
+
+    console.log("Running a function after a form submission");
+
+    let tempFormInput = formInput.value;
+
+    console.log("Form input is: " + tempFormInput);
+
+    getWeatherDataForm(tempFormInput);
+
+
+
+}
+
+    
+
+
+
 
 /**
  * Output the map to the screen
