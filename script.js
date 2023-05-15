@@ -104,8 +104,7 @@ async function getData() {
 async function getWeatherData(ipAddressInput) {
 
     let ipAddressValue = ipAddressInput;
-
-    console.log("the value before calling weather API URL is: " + ipAddressInput);
+    
 
      const weatherUrl = "https://api.weatherapi.com/v1/current.json?key=" + weatherAPIKey + "&q=" + ipAddressInput + "&aqi=no";
      
@@ -169,7 +168,7 @@ async function weatherAlerts(alertInput) {
     
 
         // check if there are weather alerts.
-        if (weatherResult.alerts.alert.length === 0) {
+        if (weatherResult.alerts.alert.length == 0) {
             outputAlert("","","","");
             console.log("no weather alerts");
         } else {
@@ -211,6 +210,8 @@ async function getWeatherForcast(ipAddressInput) {
         if (weatherResponse.ok) {
             console.log("the weather forecast API result is: " , weatherResult);
 
+            weatherAlerts(ipAddressInput);
+            
             let dailyHigh = weatherResult.forecast.forecastday[0].day.maxtemp_c;
             let dailyLow = weatherResult.forecast.forecastday[0].day.mintemp_c;
 
