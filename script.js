@@ -158,6 +158,40 @@ async function getWeatherData(ipAddressInput) {
     }
 }
 
+async function weatherAlerts(alertInput) {
+
+    const weatherUrl = "https://api.weatherapi.com/v1/forecast.json?key=" + weatherAPIKey + "&q=" + alertInput + "&days=1&aqi=yes&alerts=yes";
+
+    try {
+        const weatherResponse = await fetch(weatherUrl, {cache: "no-cache"});
+        const weatherResult = await weatherResponse.json();
+
+    
+
+        // check if there are weather alerts.
+        if (weatherResult.alerts.alert.length === 0) {
+            outputAlert("","","","");
+            console.log("no weather alerts");
+        } else {
+            let alert = weatherResult.alerts.alert[0].headline;
+            let alertCategory = weatherResult.alerts.alert[0].category;
+            let alertEvent = weatherResult.alerts.alert[0].event;
+            let alertDescription = weatherResult.alerts.alert[0].desc;
+            
+            console.log(alert);
+            console.log("Alert category is:" + alertCategory);
+            console.log(alertEvent);
+            console.log(alertDescription);
+            outputAlert(alert,alertCategory,alertEvent,"");
+        }
+    }
+ catch (error) {
+    if (error) throw error;
+    console.log("the weather forecast Alert API: ", error);
+
+    }
+}
+
 /**
  * Get the forecast from API using IP Address
  * @param {*} ipAddressInput 
@@ -189,16 +223,6 @@ async function getWeatherForcast(ipAddressInput) {
             let forecastDay2 = weatherResult.forecast.forecastday[1];
             let forecastDay3 = weatherResult.forecast.forecastday[2];
 
-            let alert = weatherResult.alerts.alert[0].headline;
-            let alertCategory = weatherResult.alerts.alert[0].category;
-            let alertEvent = weatherResult.alerts.alert[0].event;
-            let alertDescription = weatherResult.alerts.alert[0].desc;
-            
-            console.log(alert);
-            console.log("Alert category is:" + alertCategory);
-            console.log(alertEvent);
-            console.log(alertDescription);
-            outputAlert(alert,alertCategory,alertEvent,"");
 
             //Forecast date
             let forecastDay1Date = forecastDay1.date;
