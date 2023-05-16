@@ -3,9 +3,21 @@
 }
 
 body {
-    background-color: #ffcc00;
+    background-color: #6497b1;
 }
 
 .card {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.no-alert {
+    display:none;
+}
+
+.btn {
+    background-color: #03396c ;
+}
+
+.header-img {
+    width: 50px !important;
 }

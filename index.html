@@ -24,7 +24,7 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   
 </div>
-    <h1>Weather</h1>
+    <img src="images/weather-app.png" class="header-img">
 
 
     <div class="d-flex justify-content-center mb-4 mt-4">
@@ -186,11 +186,11 @@
         const ctx = document.getElementById('myChart');
       
         new Chart(ctx, {
-          type: 'bar',
+          type: 'line',
           data: {
             labels: ['Day1', 'Day2', 'Day3', 'Day4', 'Day5', 'Day6'],
             datasets: [{
-              label: '# of Votes',
+              label: 'Temperature',
               data: [12, 19, 3, 5, 2, 3],
               borderWidth: 1
             }]
