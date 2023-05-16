@@ -1,23 +1,14 @@
-//APIS
-
-//https://ipapi.co/
-// api.openweathermap.org
-
-
 //Declare constants and variables
 
-// weatherAPIKey = "fc7b8fe047463e35affcaef55f893ab8";
 weatherAPIKey = "ca80ffda470e4eca8e4235808230905";
 mapAPIKey = "aG8NIzp3QrvPAfPAcatmWUYjhlHsaOcy";
-// https://www.youtube.com/watch?v=njJdDjdwSIE
 geoAPIkey = "eec122638c9e4b6397e0c2634019c4bc"
-
-// When the page loads, run these functions
-window.onload = getData();
 
 // let ipAddressText = document.getElementById("ipAddress");
 let cityRegionText = document.getElementById("cityRegion");
 let countryText = document.getElementById("country");
+let dateTimeText = document.getElementById("localTime");
+
 let weatherTempText = document.getElementById("weatherTemp");
 let weatherConditionsText = document.getElementById("weatherConditions");
 let weatherIcon = document.getElementById("weatherIcon");
@@ -51,6 +42,9 @@ let alertEvent = document.getElementById("alertEvent");
 let alertDescription = document.getElementById("alertDescription");
 
 let formInput = document.getElementById("formInput");
+
+// When the page loads, run these functions
+window.onload = getData();
 
 
 /**
@@ -125,7 +119,9 @@ async function getWeatherData(ipAddressInput) {
             let windGust = weatherResult.current.gust_kph;
             let uv = weatherResult.current.uv;
             let pressure = weatherResult.current.pressure_mb;
+            let dateTime = weatherResult.location.localtime;
 
+            
             outputWeatherTemp(theWeather);
             outputWeatherConditions(condtionDescription);
             outputWeatherIcon(theWeatherIcon);
@@ -133,7 +129,7 @@ async function getWeatherData(ipAddressInput) {
             outputWind(windSpeed,windDir);
             outputPrecip(thePrecip);
             outputItFeelsLike(itFeelsLike);
-
+            outputDateTime(dateTime);
 
             outputWindGust(windGust);
             outputUV(uv);
@@ -578,4 +574,9 @@ function outputAlert(headlineInput, categoryInput, eventInput, descriptionInput)
 
     console.log(descriptionInput);
 
+}
+
+function outputDateTime(dateTimeInput) {
+
+    dateTimeText.innerHTML = dateTimeInput;
 }
