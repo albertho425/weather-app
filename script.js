@@ -76,9 +76,6 @@ async function getData() {
             let theLat = result.latitude;
             let theLong = result.longitude;
             
-
-            console.log("the lat is: " + theLat);
-            console.log("the long is: " + theLong);
             getMapfromAPI(theLat,theLong);
             
             // outputIpAddress(ipAdress);
@@ -177,11 +174,6 @@ async function weatherAlerts(alertInput) {
             let alertEvent = weatherResult.alerts.alert[0].event;
             let alertDescription = weatherResult.alerts.alert[0].desc;
             
-            console.log(alert);
-            console.log("Alert category is:" + alertCategory);
-            console.log(alertEvent);
-            console.log(alertDescription);
-            outputAlert(alert,alertCategory,alertEvent,"");
         }
     }
  catch (error) {
@@ -286,6 +278,11 @@ async function getWeatherDataForm(formInput) {
             let windGust = weatherResult.current.gust_kph;
             let uv = weatherResult.current.uv;
             let pressure = weatherResult.current.pressure_mb;
+
+            let lat = weatherResult.location.lat;
+            let lon = weatherResult.location.lon;
+
+            getMapfromAPI(lat,lon);
 
             outputWeatherTemp(theWeather);
             outputWeatherConditions(condtionDescription);
