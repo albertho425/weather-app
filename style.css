@@ -21,3 +21,8 @@ body {
 .header-img {
     width: 50px !important;
 }
+
+.col-sm {
+    
+    margin-top: 50px !important;
+}
