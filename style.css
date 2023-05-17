@@ -26,3 +26,7 @@ body {
     
     margin-top: 50px !important;
 }
+
+.hide {
+    display:none !important;
+}

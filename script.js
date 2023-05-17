@@ -35,6 +35,14 @@ let day1LowTempText = document.getElementById("1dayTempLow");
 let day1ChanceOfPrecipText = document.getElementById("1dayPrecip");
 let day1Wind = document.getElementById("1dayWind");
 
+let day2dateText = document.getElementById("2dayDate");
+let day2Icon = document.getElementById("2dayWeatherIcon");
+let day2HighTempText = document.getElementById("2dayTempHigh");
+let day2LowTempText = document.getElementById("2dayTempLow");
+let day2ChanceOfPrecipText = document.getElementById("2dayPrecip");
+let day2Wind = document.getElementById("2dayWind");
+
+
 //weather alerts
 let alertHeadline = document.getElementById("alertHeadline");
 let alertCategory = document.getElementById("alertCategory");
@@ -42,6 +50,7 @@ let alertEvent = document.getElementById("alertEvent");
 let alertDescription = document.getElementById("alertDescription");
 
 let formInput = document.getElementById("formInput");
+let alertDiv = document.getElementById("alert");
 
 // When the page loads, run these functions
 window.onload = getData();
@@ -150,6 +159,11 @@ async function getWeatherData(ipAddressInput) {
     }
 }
 
+/**
+ * Display weather alerts using the weather API
+ * @param {*} alertInput 
+ */
+
 async function weatherAlerts(alertInput) {
 
     const weatherUrl = "https://api.weatherapi.com/v1/forecast.json?key=" + weatherAPIKey + "&q=" + alertInput + "&days=1&aqi=yes&alerts=yes";
@@ -164,12 +178,16 @@ async function weatherAlerts(alertInput) {
         if (weatherResult.alerts.alert.length == 0) {
             outputAlert("","","","");
             console.log("no weather alerts");
+            alertDiv.classList.add("hide");
+            
         } else {
             let alert = weatherResult.alerts.alert[0].headline;
             let alertCategory = weatherResult.alerts.alert[0].category;
             let alertEvent = weatherResult.alerts.alert[0].event;
             let alertDescription = weatherResult.alerts.alert[0].desc;
-            
+
+            outputAlert(alert,alertCategory,alertEvent);
+            alert("alert");
         }
     }
  catch (error) {
@@ -208,9 +226,9 @@ async function getWeatherForcast(ipAddressInput) {
             let chanceOfSnow = weatherResult.forecast.forecastday[0].day.daily_chance_of_snow;
 
 
-            let forecastDay1 = weatherResult.forecast.forecastday[0];
-            let forecastDay2 = weatherResult.forecast.forecastday[1];
-            let forecastDay3 = weatherResult.forecast.forecastday[2];
+            let forecastDay1 = weatherResult.forecast.forecastday[1];
+            let forecastDay2 = weatherResult.forecast.forecastday[2];
+            // let forecastDay3 = weatherResult.forecast.forecastday[2];
 
 
             //Forecast date
@@ -222,7 +240,18 @@ async function getWeatherForcast(ipAddressInput) {
             let forecastDay1MaxWind = forecastDay1.day.maxwind_kph;
             let forecastDay1Icon = forecastDay1.day.condition.icon;
 
+            let forecastDay2Date = forecastDay2.date;
+            let forecastDay2TempHigh = forecastDay2.day.maxtemp_c;
+            let forecastDay2TempLow = forecastDay2.day.mintemp_c;
+            let forecastDay2Rain = forecastDay2.day.daily_chance_of_rain;
+            let forecastDay2Snow = forecastDay2.day.daily_chance_of_snow;
+            let forecastDay2MaxWind = forecastDay2.day.maxwind_kph;
+            let forecastDay2Icon = forecastDay2.day.condition.icon;
+
             outputDayForecast(forecastDay1Date, forecastDay1Icon,forecastDay1TempHigh, forecastDay1TempLow, forecastDay1Rain, forecastDay1MaxWind);
+
+            outputDay2Forecast(forecastDay2Date, forecastDay2Icon,forecastDay2TempHigh, forecastDay2TempLow, forecastDay2Rain, forecastDay2MaxWind);
+            
             
             outputHighLowTemp(dailyHigh,dailyLow);
             outputChanceOfRainSnow(chanceOfRain,chanceOfSnow);
@@ -555,7 +584,21 @@ function outputDayForecast(
         day1LowTempText.innerHTML = lowTempInput;
         day1ChanceOfPrecipText.innerHTML = chanceOfPrecipInput;
         day1Wind.innerHTML = windInput;
+        
 }
+
+function outputDay2Forecast(
+    dateInput, iconInput, highTempInput, lowTempInput, chanceOfPrecipInput, windInput) {
+ 
+        day2dateText.innerHTML = dateInput;
+        day2Icon.innerHTML = "<img class='weather-icon' src='https:" + iconInput +  "'>";
+        day2HighTempText.innerHTML = highTempInput;
+        day2LowTempText.innerHTML = lowTempInput;
+        day2ChanceOfPrecipText.innerHTML = chanceOfPrecipInput;
+        day2Wind.innerHTML = windInput;
+       
+}
+
 
 /**
  * Output the weather alert
