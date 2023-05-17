@@ -30,3 +30,20 @@ body {
 .hide {
     display:none !important;
 }
+
+.units {
+    font-size: 12px;
+}
+
+
+.card-width-normal {
+    width: 18rem;
+}
+
+.card-width-large {
+    width: 24rem;
+}
+
+.data {
+    color: #005b96;
+}

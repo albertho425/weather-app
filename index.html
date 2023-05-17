@@ -42,44 +42,44 @@
         
         
         <div class="col-sm ">
-        <div class="card mx-auto" style="width: 18rem;">   
+        <div class="card mx-auto card-width-normal">   
             <div class="card-body">
             <h5 class="card-title">Location</h5>
-            <p class="card-text" id="cityRegion"></p>
-            <p class="card-text" id="country"></p>
-            <p class="card-text" id="localTime"></p>
+            <p class="card-text data" id="cityRegion"></p>
+            <p class="card-text data" id="country"></p>
+            <p class="card-text data" id="localTime"></p>
             
             </div>
         </div>
         </div>
 
         <div class="col-sm">
-        <div class="card mx-auto" style="width: 18rem;">  
+        <div class="card mx-auto card-width-normal">  
             <div class="card-body">
               <h5 class="card-title">Weather temperature</h5>
-              <p class="">Temp: <span class="" id="weatherTemp"></span></p>
-              <p class="">Feels like: <span class="" id="feelsLike"></span> </p>
+              <p class="">Temp: <span class="data" id="weatherTemp"></span><span class="units" id="tempUnits"> C</span></p>
+              <p class="">Feels like: <span class="data" id="feelsLike"></span><span class="units" id="feelsLikeUnits"> C</span></p>
             </div>
           </div>
         </div>
 
         <div class="col-sm" style="">
-          <div class="card mx-auto" style="width: 18rem;"> 
+          <div class="card mx-auto card-width-normal"> 
             <div class="card-body">
               <h5 class="card-title">Weather conditions</h5>
-              <p class="card-text" id="weatherConditions"></p>
-              <p class="card-text" id="weatherIcon"></p>
+              <p class="card-text data" id="weatherConditions"></p>
+              <p class="card-text data" id="weatherIcon"></p>
             </div>
           </div>
           </div>
 
           <div class="col-sm">
-          <div class="card mx-auto" style="width: 18rem;">
+          <div class="card mx-auto card-width-normal">
             <div class="card-body">
               <h5 class="card-title">High and low temperature</h5>
 
-              <p class="card-text" id="">High: <span class="" id="weatherHigh"></span></p>
-              <p class="card-text" id="">Low: <span class="" id="weatherLow"></span></p>
+              <p class="card-text" id="">High: <span class="data" id="weatherHigh"></span><span class="units" id="highUnits"> C</span></p>
+              <p class="card-text" id="">Low: <span class="data" id="weatherLow"></span><span class="units" id="lowUnits"> C</span></p>
             </div>
           </div>
         </div>
@@ -87,44 +87,44 @@
 
       <div class="row">
           <div class="col-sm">
-          <div class="card mx-auto" style="width: 18rem;">    
+          <div class="card mx-auto card-width-normal">    
             <div class="card-body">
               <h5 class="card-title">Visibility and Humidity</h5>
-              <p class="card-text">Visibility KM: <span class="" id="visibility"></span></p>
-              <p class="card-text">Avg Humidity: <span class="" id="humidity"></span></p>
+              <p class="card-text">Visibility: <span class="data" id="visibility"></span><span class="units" id="visibilityUnits"> km</span></p>
+              <p class="card-text">Avg Humidity: <span class="data" id="humidity"></span></p>
             </div>
           </div>
         </div>
 
         <div class="col-sm">
-          <div class="card mx-auto" style="width: 18rem;">    
+          <div class="card mx-auto card-width-normal">    
             <div class="card-body">
               <h5 class="card-title">Precipitation</h5>
-              <p class="card-text">Total Precipitation: <span class="" id="precipitation"></span></p>
-              <p class="card-text">Chance of rain: <span class="" id="chanceOfRain"></span></p>
-              <p class="card-text">Chance of snow: <span class="" id="chanceOfSnow"></span></p>
+              <p class="card-text">Total Precipitation: <span class="data" id="precipitation"></span><span class="units" id="precipUnits"> mm</span></p>
+              <p class="card-text">Chance of rain: <span class="data" id="chanceOfRain"></span><span class="units" id="chanceRainUnits"> %</span></p>
+              <p class="card-text">Chance of snow: <span class="data" id="chanceOfSnow"></span><span class="units" id="chanceSnowhUnits"> %</p>
             </div>
           </div>
         </div>
 
         <div class="col-sm">
-          <div class="card mx-auto" style="width: 18rem;">
+          <div class="card mx-auto card-width-normal">
             <div class="card-body">
               <h5 class="card-title">Sunrise and Sunset</h5>
-              <p class="card-text">Sunrise: <span class="" id="sunrise"></span></p>
-              <p class="card-text">Sunset: <span class="" id="sunset"></span></p>
+              <p class="card-text">Sunrise: <span class="data" id="sunrise"></span></p>
+              <p class="card-text">Sunset: <span class="data" id="sunset"></span></p>
               
             </div>
           </div>
         </div>
 
         <div class="col-sm">
-          <div class="card mx-auto" style="width: 18rem;">
+          <div class="card mx-auto card-width-normal">
             
             <div class="card-body">
               <h5 class="card-title">UV and Air quality</h5>
-              <p class="card-text">UV: <span  id="uv"></span>  </p>
-              <p class="card-text">Pressue: <span id="pressure"></span></p>            
+              <p class="card-text">UV: <span  class="data" id="uv"></span>  </p>
+              <p class="card-text">Pressue: <span class="data" id="pressure"></span></p>            
             </div>
           </div>
         </div>
@@ -133,17 +133,17 @@
       <div class="row">
 
         <div class="col-sm">
-          <div class="card mx-auto" style="width: 18rem;">
+          <div class="card mx-auto card-width-normal">
             <div class="card-body">
               <h5 class="card-title">Wind</h5>
-              <p class="card-text">Wind speed: <span id="wind"></span></p>
-              <p class="card-text">Wind gust: <span id="windGust"></span></p>
+              <p class="card-text">Wind speed: <span class="data" id="wind"></span><span class="units" id="windUnits"> km/h</span></p>
+              <p class="card-text">Wind gust: <span class="data" id="windGust"></span><span class="units" id="gustUnits"> km/h</span></p>
             </div>
           </div>
         </div>
 
         <div class="col-sm">
-          <div class="card mx-auto" style="width: 18rem;">
+          <div class="card mx-auto card-width-normal">
             <div class="card-body">
               <h5 class="card-title">Map</h5>
                 <span class="map-img" id="map"></span>
@@ -153,29 +153,29 @@
         </div>
 
         <div class="col-sm">
-          <div class="card mx-auto" style="width: 18rem;">
+          <div class="card mx-auto card-width-normal">
             <div class="card-body">
               <h5 class="card-title">Forecast 24 hours</h5>
-              <p class="card-text"> <span id="1dayDate"></span></p>
+              <p class="card-text"> <span class="data" id="1dayDate"></span></p>
               <p class="card-text" id="1dayWeatherIcon"></p>
-              <p class="card-text">High:  <span id="1dayTempHigh"></span></p>
-              <p class="card-text">Low: <span id="1dayTempLow"></span></p>
-              <p class="card-text">Chance of precip:  <span id="1dayPrecip"></span></p>
-              <p class="card-text">Wind:   <span id="1dayWind"></span></p>
+              <p class="card-text">High:  <span class="data" id="1dayTempHigh"></span><span class="units" id="forecast1HighUnits"> C</span></p>
+              <p class="card-text">Low: <span class="data" id="1dayTempLow"></span><span class="units" id="forecast1LowUnits"> C</span></p>
+              <p class="card-text">Chance of precip:  <span class="data" id="1dayPrecip"></span><span class="units" id="forecast1PrecipUnits"> %</span></p>
+              <p class="card-text">Wind:   <span class="data" id="1dayWind"></span><span class="units" id="forecast1WindUnits"> km/h</span></p>
             </div>
           </div>
         </div>
 
         <div class="col-sm">
-          <div class="card mx-auto" style="width: 18rem;">
+          <div class="card mx-auto card-width-normal">
             <div class="card-body">
               <h5 class="card-title">Forecast 48 hours</h5>
-              <p class="card-text"> <span id="2dayDate"></span></p>
+              <p class="card-text"> <span class="data" id="2dayDate"></span></p>
               <p class="card-text" id="2dayWeatherIcon"></p>
-              <p class="card-text">High:  <span id="2dayTempHigh"></span></p>
-              <p class="card-text">Low: <span id="2dayTempLow"></span></p>
-              <p class="card-text">Chance of precip:  <span id="2dayPrecip"></span></p>
-              <p class="card-text">Wind:   <span id="2dayWind"></span></p>
+              <p class="card-text">High:  <span class="data" id="2dayTempHigh"></span><span class="units" id="forecast2HighUnits"> C</span></p>
+              <p class="card-text">Low: <span class="data" id="2dayTempLow"></span><span class="units" id="forecast1LowUnits"> C</span></p>
+              <p class="card-text">Chance of precip:  <span class="data" id="2dayPrecip"></span><span class="units" id="forecast1PrecipUnits"> %</span></p>
+              <p class="card-text">Wind:   <span class="data" id="2dayWind"></span><span class="units" id="forecast1WindUnits"> km/h</span></p>
             </div>
           </div>
         </div>
