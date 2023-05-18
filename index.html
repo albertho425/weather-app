@@ -20,8 +20,8 @@
         <span class="" id="alertEvent"></span><span> </span> 
       </p>  
         <span class="" id="alertDescription"></span>
-        <span><a href="#" class="alert-link">More info</a></span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>  
+        <!-- <span><a href="#" class="alert-link">More info</a></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>   -->
   </div>
 
   <img src="images/weather-app.png" class="header-img" alt="Weather application logo">
@@ -128,14 +128,67 @@
        </div>  <!--end of row -->
 
       <div class="row">
+
+        <div class="col-sm">
+          <div class="card mx-auto card-width-large">
+            <div class="card-body">
+              <h5 class="card-title">Sunrise and Sunset</h5>
+
+              <div class="table-responsive">
+                <table class="table">
+                  
+                  <tbody>
+                    <tr class="">
+                      <td scope="row"><img src="images/sunrise.png" class="sunset-sunrise"></td>
+                      <td><span class="data" id="sunrise"></span></td>
+                      
+                    </tr>
+                    <tr class="">
+                      <td scope="row"><img src="images/sunset.png" class="sunset-sunrise"></td>
+                      <td><span class="data" id="sunset"></span></td>
+                      
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+              
+            </div>
+          </div>
+        </div>
+
           <div class="col-sm">
-          <div class="card mx-auto card-width-normal">    
+          <div class="card mx-auto card-width-large">    
             <div class="card-body">
               <h5 class="card-title">Other</h5>
-              <p class="card-text">Visibility: <span class="data" id="visibility"></span><span class="units" id="visibilityUnits"> km</span></p>
-              <p class="card-text">Avg Humidity: <span class="data" id="humidity"></span></p>
-              <p class="card-text">UV: <span  class="data" id="uv"></span>  </p>
-              <p class="card-text">Pressue: <span class="data" id="pressure"></span></p>            
+              <div class="table-responsive">
+                <table class="table">
+              
+                  <tbody>
+                    <tr class="">
+                      <td scope="row">Visibility:</td>
+                      <td><span class="data" id="visibility"></span><span class="units" id="visibilityUnits"> km</span></td>
+              
+                    </tr>
+                    <tr class="">
+                      <td scope="row">Avg Humidity: </td>
+                      <td><span class="data" id="humidity"></span></td>
+              
+                    </tr>
+                    <tr class="">
+                      <td scope="row">UV: </td>
+                      <td><span class="data" id="uv"></span></td>
+              
+                    </tr>
+                    <tr class="">
+                      <td scope="row">Pressure: </td>
+                      <td><span class="data" id="pressure"></span></td>
+              
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
             </div>
           </div>
         </div>
@@ -144,24 +197,40 @@
           <div class="card mx-auto card-width-large">    
             <div class="card-body">
               <h5 class="card-title">Precipitation</h5>
-              <p class="card-text">Total Precipitation: <span class="data" id="precipitation"></span><span class="units" id="precipUnits"> mm</span></p>
-              <p class="card-text">Chance of rain: <span class="data" id="chanceOfRain"></span><span class="units" id="chanceRainUnits"> %</span></p>
-              <p class="card-text">Chance of snow: <span class="data" id="chanceOfSnow"></span><span class="units" id="chanceSnowhUnits"> %</p>
-            </div>
-          </div>
-        </div>
 
-        <div class="col-sm">
-          <div class="card mx-auto card-width-large">
-            <div class="card-body">
-              <h5 class="card-title">Sunrise and Sunset</h5>
-              <p class="card-text">Sunrise: <span class="data" id="sunrise"></span></p>
-              <p class="card-text">Sunset: <span class="data" id="sunset"></span></p>
+              <div class="table-responsive">
+                <table class="table">
+                  
+                  <tbody>
+                    <tr class="">
+                      <td scope="row">Total Precipitation:</td>
+                      <td><span class="data" id="precipitation"></span><span class="units" id="precipUnits"> mm</span></td>
+                  
+                    </tr>
+                    
+                    <tr class="">
+                      <td scope="row">Chance of rain:</td>
+                      <td><span class="data" id="chanceOfRain"></span><span class="units" id="chanceRainUnits"> %</span></td>
+                  
+                    </tr>
+
+                    <tr class="">
+                      <td scope="row">Chance of snow:</td>
+                      <td><span class="data" id="chanceOfSnow"></span><span class="units" id="chanceSnowhUnits"> %</td>
+                  
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
               
+              <p class="card-text"> </p>
+              <p class="card-text"> </p>
+              <p class="card-text"> </p>
             </div>
           </div>
         </div>
 
+        
         </div> <!--end of row -->
 
       <div class="row">
@@ -170,8 +239,25 @@
           <div class="card mx-auto card-width-large">
             <div class="card-body">
               <h5 class="card-title">Wind</h5>
-              <p class="card-text">Wind speed: <span class="data" id="wind"></span><span class="units" id="windUnits"> km/h</span></p>
-              <p class="card-text">Wind gust: <span class="data" id="windGust"></span><span class="units" id="gustUnits"> km/h</span></p>
+
+              <div class="table-responsive">
+                <table class="table">
+                  
+                  <tbody>
+                    <tr class="">
+                      <td scope="row">Wind speed:</td>
+                      <td><span class="data" id="wind"></span><span class="units" id="windUnits"> km/h</span></td>
+                      
+                    </tr>
+                    <tr class="">
+                      <td scope="row">Wind gust:</td>
+                      <td><span class="data" id="windGust"></span><span class="units" id="gustUnits"> km/h</span></td>
+
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
             </div>
           </div>
         </div>
