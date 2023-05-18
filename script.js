@@ -4,6 +4,7 @@ weatherAPIKey = "ca80ffda470e4eca8e4235808230905";
 mapAPIKey = "aG8NIzp3QrvPAfPAcatmWUYjhlHsaOcy";
 geoAPIkey = "eec122638c9e4b6397e0c2634019c4bc"
 
+let formPlaceholder = document.getElementById("formInput").placeholder;
 // let ipAddressText = document.getElementById("ipAddress");
 let cityRegionText = document.getElementById("cityRegion");
 let countryText = document.getElementById("country");
@@ -49,7 +50,7 @@ let alertCategory = document.getElementById("alertCategory");
 let alertEvent = document.getElementById("alertEvent");
 let alertDescription = document.getElementById("alertDescription");
 
-let formInput = document.getElementById("formInput");
+let theFormInput = document.getElementById("formInput");
 let alertDiv = document.getElementById("alert");
 
 let countryIcon = document.getElementById("countryEmoji");
@@ -94,6 +95,12 @@ async function getData() {
             getWeatherData(theCity);      
 
             outputCountryEmoji(countryEmoji);
+
+            console.log(theCity);
+            
+            // when getting weather data automatically by IP, get the city and fill it in the form box
+            let formPlaceholder = document.getElementById("formInput").placeholder = theCity;
+
         }
 
     } catch (error) {
@@ -157,6 +164,7 @@ async function getWeatherData(ipAddressInput) {
             getSunriseSunset(ipAddressValue);
             getWeatherForcast(ipAddressValue);
             outputHumidity(humidity);
+
             
         }
 
