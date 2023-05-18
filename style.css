@@ -1,5 +1,5 @@
 .location-map {
-    width: 200px !important;
+    width: 300px !important;
 }
 
 body {
@@ -47,3 +47,7 @@ body {
 .data {
     color: #005b96;
 }
+
+#countryEmoji {
+    font-size: 30px;
+}  

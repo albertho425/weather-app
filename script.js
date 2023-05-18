@@ -53,6 +53,8 @@ let formInput = document.getElementById("formInput");
 let alertDiv = document.getElementById("alert");
 
 let countryIcon = document.getElementById("countryEmoji");
+let timeZone =  document.getElementById("timezone");
+
 
 // When the page loads, run these functions
 window.onload = getData();
@@ -136,8 +138,9 @@ async function getWeatherData(ipAddressInput) {
             let uv = weatherResult.current.uv;
             let pressure = weatherResult.current.pressure_mb;
             let dateTime = weatherResult.location.localtime;
+            let theTimeZone = weatherResult.location.tz_id;
 
-            
+            outputTimeZone(theTimeZone);
             outputWeatherTemp(theWeather);
             outputWeatherConditions(condtionDescription);
             outputWeatherIcon(theWeatherIcon);
@@ -648,4 +651,8 @@ function outputDateTime(dateTimeInput) {
 
 function outputCountryEmoji(emojiInput) {
     countryIcon.innerHTML = emojiInput;
+}
+
+function outputTimeZone(timezoneInput) {
+    timeZone.innerHTML = timezoneInput;
 }
