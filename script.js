@@ -52,6 +52,8 @@ let alertDescription = document.getElementById("alertDescription");
 let formInput = document.getElementById("formInput");
 let alertDiv = document.getElementById("alert");
 
+let countryIcon = document.getElementById("countryEmoji");
+
 // When the page loads, run these functions
 window.onload = getData();
 
@@ -78,6 +80,9 @@ async function getData() {
 
             let theLat = result.latitude;
             let theLong = result.longitude;
+
+            let countryCode = result.country_code;
+            let countryEmoji = getFlagEmoji(countryCode);
             
             getMapfromAPI(theLat,theLong);
             
@@ -85,6 +90,8 @@ async function getData() {
             outputCityRegion(theCity,theRegion);
             outputCountry(theCountry);
             getWeatherData(theCity);      
+
+            outputCountryEmoji(countryEmoji);
         }
 
     } catch (error) {
@@ -187,7 +194,7 @@ async function weatherAlerts(alertInput) {
             let alertDescription = weatherResult.alerts.alert[0].desc;
 
             outputAlert(alert,alertCategory,alertEvent);
-            alert("alert");
+            console.log("*** Weather alert ***")
         }
     }
  catch (error) {
@@ -435,6 +442,21 @@ function outputMap(mapInput)
 
 }
 
+
+/**
+ *  Get the flag emoji from a country code
+ * @param {*} countryCode 
+ * @returns the country emoji
+ */
+
+function getFlagEmoji(countryCode) {
+
+    return countryCode.toUpperCase().replace(/./g, char => 
+        String.fromCodePoint(127397 + char.charCodeAt())
+    );
+  }
+  
+
 /**
  * 
  * Functions that output to the screen
@@ -622,4 +644,8 @@ function outputAlert(headlineInput, categoryInput, eventInput, descriptionInput)
 function outputDateTime(dateTimeInput) {
 
     dateTimeText.innerHTML = dateTimeInput;
+}
+
+function outputCountryEmoji(emojiInput) {
+    countryIcon.innerHTML = emojiInput;
 }

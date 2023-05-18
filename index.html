@@ -48,41 +48,52 @@
             <p class="card-text data" id="cityRegion"></p>
             <p class="card-text data" id="country"></p>
             <p class="card-text data" id="localTime"></p>
+            <p class="card-text data" id="countryEmoji"></p>
             
             </div>
         </div>
         </div>
 
         <div class="col-sm">
-        <div class="card mx-auto card-width-normal">  
+        <div class="card mx-auto card-width-large">  
             <div class="card-body">
               <h5 class="card-title">Weather temperature</h5>
-              <p class="">Temp: <span class="data" id="weatherTemp"></span><span class="units" id="tempUnits"> C</span></p>
-              <p class="">Feels like: <span class="data" id="feelsLike"></span><span class="units" id="feelsLikeUnits"> C</span></p>
+              <p class="card-text data"><span class="" id="weatherIcon"></span></p>
+              <p class="card-text data"><span class="" id="weatherConditions"></span></p>
+              <div class="table-responsive">
+                <table class="table">
+                  
+                  <tbody>
+                    <tr class="">
+                      <td scope="row"><span class="data-title">Temperature</span></td>
+                      <td><span class="data" id="weatherTemp"></span><span class="units" id="tempUnits"> C</span></td>
+                      
+                    </tr>
+                    <tr class="">
+                      <td scope="row"><span class="data-title">Feels like: </span></td>
+                      <td><span class="data" id="feelsLike"></span><span class="units" id="feelsLikeUnits"> C</span></td>
+                      
+                    </tr>
+                    <tr class="">
+                      <td scope="row">High:</td>
+
+                      <td><span class="data" id="weatherHigh"></span><span class="units" id="highUnits"> C</span></td>
+                      
+                    </tr>
+                    <tr class="">
+                      <td scope="row">Low:</td>
+
+                      <td><span class="data" id="weatherLow"></span><span class="units" id="lowUnits"> C</span></td>
+                      
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+          
             </div>
           </div>
         </div>
 
-        <div class="col-sm" style="">
-          <div class="card mx-auto card-width-normal"> 
-            <div class="card-body">
-              <h5 class="card-title">Weather conditions</h5>
-              <p class="card-text data" id="weatherConditions"></p>
-              <p class="card-text data" id="weatherIcon"></p>
-            </div>
-          </div>
-          </div>
-
-          <div class="col-sm">
-          <div class="card mx-auto card-width-normal">
-            <div class="card-body">
-              <h5 class="card-title">High and low temperature</h5>
-
-              <p class="card-text" id="">High: <span class="data" id="weatherHigh"></span><span class="units" id="highUnits"> C</span></p>
-              <p class="card-text" id="">Low: <span class="data" id="weatherLow"></span><span class="units" id="lowUnits"> C</span></p>
-            </div>
-          </div>
-        </div>
        </div>  <!--end of row -->
 
       <div class="row">
