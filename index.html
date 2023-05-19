@@ -53,19 +53,19 @@
                 <tbody>
                   <tr class="">
                     <td scope="row">Location</td>
-                    <td><span id="cityRegion"></span></td>
+                    <td><span class="data" id="cityRegion"></span></td>
                   </tr>
                   <tr class="">
                     <td scope="row">Country</td>
-                    <td><span id="country"></span></td>
+                    <td><span class="data" id="country"></span></td>
                   </tr>
                   <tr class="">
                     <td scope="row">Time</td>
-                    <td><span id="localTime"></span></td>
+                    <td><span class="data" id="localTime"></span></td>
                   </tr>
                   <tr class="">
                     <td scope="row">Time zone</td>
-                    <td><span id="timezone"></span></td>
+                    <td><span class="data" id="timezone"></span></td>
                   </tr>
                 </tbody>
               </table>
@@ -246,15 +246,23 @@
                   
                   <tbody>
                     <tr class="">
-                      <td scope="row">Wind speed:</td>
+                      <td scope="row">Speed:</td>
                       <td><span class="data" id="wind"></span><span class="units" id="windUnits"> km/h</span></td>
                       
                     </tr>
                     <tr class="">
-                      <td scope="row">Wind gust:</td>
+                      <td scope="row">Gust:</td>
                       <td><span class="data" id="windGust"></span><span class="units" id="gustUnits"> km/h</span></td>
 
                     </tr>
+
+                    <tr class="">
+                      <td scope="row">Degree:</td>
+                      <td><span class="data" id="windDegree"></span><span class="units" id=""></span></td>
+
+                    </tr>
+
+
                   </tbody>
                 </table>
               </div>
@@ -285,7 +293,7 @@
                       
                     </tr>
                     <tr class="">
-                      <td scope="row">Chance of precip:</td>
+                      <td scope="row">Probability:</td>
                       <td><span class="data" id="1dayPrecip"></span><span class="units" id="forecast1PrecipUnits"> %</span></td>
                       
                     </tr>
@@ -324,7 +332,7 @@
                       
                     </tr>
                     <tr class="">
-                      <td scope="row">Chance of precip:</td>
+                      <td scope="row">Probability:</td>
                       <td><span class="data" id="2dayPrecip"></span><span class="units" id="forecast2PrecipUnits"> %</span></td>
                       
                     </tr>
@@ -334,6 +342,7 @@
                       <td><span class="data" id="2dayWind"></span><span class="units" id="forecast2WindUnits"> km/h</span></td>
         
                     </tr>
+                    
                   </tbody>
           
             </div>
