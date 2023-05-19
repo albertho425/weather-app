@@ -1,5 +1,5 @@
 .location-map {
-    width: 300px !important;
+    width: 355px !important;
 }
 
 body {
@@ -49,7 +49,7 @@ body {
 }
 
 #countryEmoji {
-    font-size: 30px;
+    font-size: 40px;
 }  
 
 .sunset-sunrise {
