@@ -508,7 +508,7 @@ function getCodeOfCountry(countryInput) {
     // // return codeResult;
 
     // console.log("*** *** " + countries.find( country => country.name === countryInput ).code);
-    let variable = "Pizza";
+    
     let value = countryInput;
     console.log("*** *** *** value of countryInput is " + value);
     // let answer =  countries.find( country => country.name === countryInput.value ).code
@@ -961,6 +961,7 @@ const countries = [
     {name: "United Arab Emirates",code: "AE"},
     {name: "United Kingdom",code: "GB"},
     {name: "United States",code: "US"},
+    {name: "United States of America",code: "US"},
     {name: "United States Minor Outlying Islands",code: "UM"},
     {name: "Uruguay",code: "UY"},
     {name: "Uzbekistan",code: "UZ"},
