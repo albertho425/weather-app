@@ -117,6 +117,7 @@ async function getData() {
 }
 
 
+
 /**
  * Get the weather data from API
  * @param {*} ipAddressInput
@@ -314,9 +315,7 @@ async function getWeatherDataForm(formInput) {
             let theCity = weatherResult.location.name;
             let theRegion = weatherResult.location.region;
             let theCountry = weatherResult.location.country;
-            outputCityRegion(theCity,theRegion);
-            outputCountry(theCountry);
-
+            
             let theWeather = weatherResult.current.temp_c;
             let condtionDescription = weatherResult.current.condition["text"];
             let theWeatherIcon = weatherResult.current.condition["icon"];
@@ -339,9 +338,18 @@ async function getWeatherDataForm(formInput) {
             let lon = weatherResult.location.lon;
             let countryFromFormInput = weatherResult.location.country;
             console.log(countryFromFormInput);
+            
 
             // let found = countryListAllIsoData.find(country => country.name === races.Circuit.Location.country);
             // let code = found ? found.code3 : 'n/a';
+
+
+            outputCityRegion(theCity,theRegion);
+            // outputCountry(theCountry);
+            let theCountryCode = getCodeOfCountry(theCountry);
+            console.log("*** country code from form input is: " + theCountryCode);
+            let countryEmoji = getFlagEmoji(theCountryCode);
+            outputCountryEmoji(countryEmoji);
 
 
             getMapfromAPI(lat,lon);
@@ -453,7 +461,7 @@ function  processForm() {
 
 }
 
-    
+
 
 
 
@@ -486,6 +494,29 @@ function getFlagEmoji(countryCode) {
         String.fromCodePoint(127397 + char.charCodeAt())
     );
   }
+
+/**
+ * Get a two character country code from a country name
+ * @param {*} countryInput 
+ * @returns country code
+ */
+function getCodeOfCountry(countryInput) {
+
+    
+    // let codeResult = countries.find( country => country.name === countryInput.value).code;
+    // console.log("*** " + codeResult);
+    // // return codeResult;
+
+    // console.log("*** *** " + countries.find( country => country.name === countryInput ).code);
+    let variable = "Pizza";
+    let value = countryInput;
+    console.log("*** *** *** value of countryInput is " + value);
+    // let answer =  countries.find( country => country.name === countryInput.value ).code
+    let answer =  countries.find( country => country.name === value ).code
+    console.log("*** *** " + answer);
+    return answer;
+
+}
   
 
 /**
@@ -690,8 +721,6 @@ function outputWindDegree(windDegreeInput) {
     
 }
 
-// All countries
-// length 252
 const countries = [
     {name: "Afghanistan",code: "AF"},
     {name: "Aland Islands",code: "AX"},
