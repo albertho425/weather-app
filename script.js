@@ -345,11 +345,12 @@ async function getWeatherDataForm(formInput) {
 
 
             outputCityRegion(theCity,theRegion);
-            // outputCountry(theCountry);
+            outputCountry(theCountry);
             let theCountryCode = getCodeOfCountry(theCountry);
             console.log("*** country code from form input is: " + theCountryCode);
             let countryEmoji = getFlagEmoji(theCountryCode);
             outputCountryEmoji(countryEmoji);
+            
 
 
             getMapfromAPI(lat,lon);
