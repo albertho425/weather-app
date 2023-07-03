@@ -14,13 +14,13 @@
 - Bootstrap
 
 ### Desktop screenshot
-<img width="1440" alt="desktop" src="https://github.com/maplesyrupweb/weather-app/assets/73809301/6ed1319b-d3d1-47b4-97f4-7f1f54ad0652">
+<img width="1813" alt="weather_desktop_01" src="https://github.com/maplesyrupweb/weather-app/assets/73809301/730da34e-6419-4516-b0cb-4f31e3a59d92">
 
 ### Mobile screenshot
-<img width="370" alt="mobile" src="https://github.com/maplesyrupweb/weather-app/assets/73809301/8c2eec8c-97e0-4e39-9e1f-e43bf36c7b6e">
+<img width="596" alt="weather_mobile_01" src="https://github.com/maplesyrupweb/weather-app/assets/73809301/247d3e95-f0c8-4262-befb-9dbb9f1b6ef2">
 
 ### Desktop screenshot #2
-<img width="1440" alt="desktop02" src="https://github.com/maplesyrupweb/weather-app/assets/73809301/fe44b720-8f45-4464-9e2f-948660ed8424">
+<img width="1863" alt="weather_desktop_02" src="https://github.com/maplesyrupweb/weather-app/assets/73809301/dc7d5fa0-edd7-4355-8682-9eaae80db633">
 
 ### Icons used
 - Flaticon
